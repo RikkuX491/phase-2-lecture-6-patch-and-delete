@@ -48,13 +48,6 @@
       "image": "./images/fish.jpeg",
       "likes": 9,
       "animal_type": "Fish"
-    },
-    {
-      "likes": 0,
-      "name": "Snowball",
-      "image": "https://www.humanesociety.org/sites/default/files/2019/03/rabbit-475261_0.jpg",
-      "animal_type": "Rabbit",
-      "id": 8
     }
   ]
 }
