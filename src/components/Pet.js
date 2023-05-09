@@ -1,8 +1,13 @@
 import {useState} from "react"
 
-function Pet({pet, adoptPet}){
+function Pet({pet, adoptPet, increaseLikes}){
 
     const [favorite, setFavorite] = useState(false)
+    const [displayName, setDisplayName] = useState(true)
+
+    function updateDisplayName(){
+        setDisplayName(displayName => !displayName)
+    }
     
     return (
         <li className="pet">
@@ -16,8 +21,10 @@ function Pet({pet, adoptPet}){
                 setFavorite((favorite) => !favorite)
             }} className="favorite-button">☆</button>
             )}
-            <h4>{/* Write a ternary expression to display either the name or the type of animal for the pet here */}</h4>
-            <button className="likes-button">{/* Number of likes goes here */} likes</button>
+            <h4 onClick={updateDisplayName}>{displayName ? pet.name : pet.animal_type}</h4>
+            <button onClick={() => {
+                increaseLikes(pet)
+            }} className="likes-button">{pet.likes} likes</button>
             <br/><br/>
             <button onClick={() => {
                 adoptPet(pet.id)

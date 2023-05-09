@@ -20,13 +20,18 @@ function App() {
     if(searchText === ""){
       return true
     }
-    return pet.name.toUpperCase().includes(searchText.toUpperCase())
+    return pet.name.toUpperCase().includes(searchText.toUpperCase()) || pet.animal_type.toUpperCase().includes(searchText.toUpperCase())
   })
 
   function adoptPet(id){
-    setPets(pets.filter(pet => {
-      return pet.id !== id
-    }))
+    fetch(`http://localhost:4000/pets/${id}`, {
+      method: "DELETE"
+    })
+    .then(() => {
+      setPets(pets.filter(pet => {
+        return pet.id !== id
+      }))
+    })
   }
 
   function addPet(event){
@@ -48,10 +53,32 @@ function App() {
     setFormData({...formData, [event.target.name]: event.target.value})
   }
 
+  function increaseLikes(pet){
+    fetch(`http://localhost:4000/pets/${pet.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({likes: pet.likes + 1})
+    })
+    .then(response => response.json())
+    .then(updatedPet => {
+      setPets(pets => pets.map(p => {
+        if(p.id === updatedPet.id){
+          return {...p, likes: p.likes + 1}
+        }
+        else{
+          return p
+        }
+      }))
+    })
+  }
+
   return (
     <div className="app">
       <Header />
-      <PetPage pets={filteredPets} setSearchText={setSearchText} adoptPet={adoptPet} addPet={addPet} updateFormData={updateFormData} />
+      <PetPage pets={filteredPets} setSearchText={setSearchText} adoptPet={adoptPet} addPet={addPet} updateFormData={updateFormData} increaseLikes={increaseLikes} />
     </div>
   );
 }
