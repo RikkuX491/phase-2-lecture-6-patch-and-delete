@@ -6,9 +6,7 @@
 
 ## Introduction
 
-Today we'll continue to build our app for the pet adoption center, Flatapets, that displays a list of pets available for adoption at this pet adoption center. We will be adding a feature that will allow the user to click a "Like" button which will increase the number of likes for that pet when clicked. We will also add functionality to make a PATCH request to persist the updated number of likes for the pet. We will also be adding functionality to make a DELETE request when the user clicks the "Adopt" button to adopt a pet to permanently delete the pet from the database.
-
-Once the user clicks the "Add Pet" submit button, a new pet should be added to the list of pets that are displayed on the page and this will persist in the backend as well. We will be using the concepts learned in this lecture to build out this new feature in this app.
+Today we'll continue to build our app for the pet adoption center, Flatapets, that displays a list of pets available for adoption at this pet adoption center. We will be adding a feature that will allow the user to click a "Like" button which will increase the number of likes for that pet when clicked. We will also add functionality to make a PATCH request to persist the updated number of likes for the pet. We will also be adding functionality to make a DELETE request when the user clicks the "Adopt" button to adopt a pet to permanently delete the pet from the database. Finally, we will be adding a feature that will toggle between displaying the name of the pet and the type of animal for the pet when the user clicks on the <h4> element where the name or type of animal for the pet would display. We will be using the concepts learned in this lecture to build out these new features in this app.
 
 ## Setup
 
